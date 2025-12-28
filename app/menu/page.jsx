@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { showSuccessToast } from "../../components/toaster"
 
 const menuItems = [
@@ -53,9 +53,12 @@ export default function MenuPage() {
   const [cart, setCart] = useState([])
   const [temp, setTemp] = useState(false)
   const router = useRouter()
-
+    const searchParams = useSearchParams()
+    const restaurantId = searchParams.get("id")
+    const table = searchParams.get("table")
   useEffect(() => {
-    const table = localStorage.getItem("tableNumber")
+ localStorage.setItem('restaurantId',restaurantId)
+  localStorage.setItem('table',table)
     if (!table) router.push("/")
     else setTableNumber(table)
 
