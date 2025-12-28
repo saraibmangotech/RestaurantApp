@@ -58,6 +58,7 @@ export default function MenuPage() {
     const table = searchParams.get("table")
   useEffect(() => {
  localStorage.setItem('restaurantId',restaurantId)
+ 
   localStorage.setItem('table',table)
     if (!table) router.push("/")
     else setTableNumber(table)
